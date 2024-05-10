@@ -146,6 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return numero
     };
 
+    let banderaDivision = false;
+
+    const validacionSegundoNumeroEnDivision = (segundoNumero) => {
+
+        let bandera = false
+        if(segundoNumero === 0){
+            bandera = true;
+        }
+
+        return bandera;
+    }
+
+    const mostrarMensajeError = () =>{
+        const $pantallaCalculadora = document.querySelector('#pantalla-calculadora');
+        $pantallaCalculadora.textContent = "ERROR!!!";
+
+        setTimeout(() => {
+            $pantallaCalculadora.textContent = "0";
+        }, 2000);
+    }
+
     const obtenerOperacionARealizar = (primerNumero, segundoNumero, signo) => {
 
         let resultado = 0;
@@ -165,8 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
             case '/':
-                //HACER VALIDACION QUE segundoNumero no sea cero, puede ser con un settimeout
-                resultado = primerNumero / segundoNumero;
+                if(!validacionSegundoNumeroEnDivision(segundoNumero)){
+                    resultado = primerNumero / segundoNumero;
+                }
+                else{
+                    // mostrarMensajeError();
+                    resultado = 0;
+                    banderaDivision = true;
+                }
                 break;
         
             default:
@@ -190,8 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const primerNumero = obtenerValorPrimerNumero(indiceDelSigno, textoPantalla);
         const segundoNumero = obtenerValorSegundoNumero(indiceDelSigno, textoPantalla);
         const resultado = obtenerOperacionARealizar(primerNumero, segundoNumero, signo);
-        mostrarResultadoEnPantalla(resultado);
-        //sexto mostrar esa operacion en pantalla
+
+        if(banderaDivision){
+            mostrarMensajeError();
+            banderaDivision = false;
+        }
+        else{
+            mostrarResultadoEnPantalla(resultado);
+        }
     };
 
     //Logica del codigo
