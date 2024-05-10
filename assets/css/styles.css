@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #4AB149;
+}
+
+#calculadora-container{
+    position: absolute;
+    width: 350px;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1B1A1A;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.color-fondo{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    float: right;
+    background-color: white;
+    cursor: pointer;
+}
+
+#calculadora{
+    margin-right: 30px;
+}
+
+#pantalla-calculadora{
+    padding-top: 25px;
+    margin: 10px;
+    color: white;
+    text-align: right;
+    font-size: 35px;
+    font-family: "Poetsen One", sans-serif;
+    font-style: normal;
+}
+
+#botones-calculadora{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    grid-auto-rows: 50px;
+    font-weight: 400;
+    font-family: "Poetsen One", sans-serif;
+    font-style: normal;
+}
+
+.boton{
+    width: 50px;
+    height: 50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #FFF033;
+    color: #A503B1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.boton:hover{
+    transform: scale(1.1);
+}
+
+#igual{
+    grid-row: span 2;
+    height: 105px;
+    border-top-left-radius: 25%; 
+    border-top-right-radius: 25%; 
+    border-bottom-left-radius: 25%; 
+    border-bottom-right-radius: 25%; 
+    background-color: #F73310;
+    color: white;
+}
+
+#C{
+    background-color: #2A20F9;
+    color: white;
+}
+
+.num{
+    background-color: #15FA8B;
+    color: black;
+}
+
+
+/* aplicando el modo oscuro en los botones */
+#calculadora-container.modo-claro{
+    background-color: white;
+}
+
+#calculadora-container.modo-claro .color-fondo{
+    background-color: #1B1A1A;
+}
+
+#calculadora-container.modo-claro #pantalla-calculadora{
+    color: black;
+}
+
+#calculadora-container.modo-claro #calculadora #botones-calculadora #C{
+    background-color: #FF9FF9;
+    color: #FB5F4F;
+}
+
+#calculadora-container.modo-claro #calculadora #botones-calculadora .boton{
+    background-color: #FFBAFB;
+    color: #E50DD8;
+}
+
+#calculadora-container.modo-claro #calculadora #botones-calculadora .num{
+    background-color: #2FFCE7;
+    color: black;
+}
+
+#calculadora-container.modo-claro #calculadora #botones-calculadora #igual{
+    background-color: #2FFCE7;
+    color: black;
+}
